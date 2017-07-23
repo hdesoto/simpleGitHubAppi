@@ -18,6 +18,12 @@ myApp.controller('gitHubAppController',['gitHubAppService', function(gitHubAppSe
 	
 	self.searchUser = function(){
 		self.error = false;
+		if(!!!self.lookedUser){
+			self.firstLoad = true;
+		}
+		else{
+
+
 		gitHubAppService.getUser(self.lookedUser, function(userObtained){
 			self.user = userObtained;
 			//console.log(self.user);
@@ -36,6 +42,7 @@ myApp.controller('gitHubAppController',['gitHubAppService', function(gitHubAppSe
 			self.errText = errorReceived.statusText;
 			//console.log(self.errCode);
 		});
+	};
 	};
 
 	self.showRepos = function(){
